@@ -6,7 +6,12 @@ class StudentsController < ApplicationController
     end
 
     def grades
-       grades = Student.order("grade").reverse
+       grades = Student.order(grade: :desc)
        render json: grades 
+    end
+
+    def highest_grade
+        highest_grade = Student.order("grade DESC").first
+        render json: highest_grade
     end
 end
